@@ -11,11 +11,28 @@ namespace CBB.HelpDesk.ConsoleClient
     {
         static void Main(string[] args)
         {
+            AnonymousTest();
+
             AddTicketTest();
 
             Console.WriteLine("Press any key to exit.");
 
             Console.ReadKey();
+
+        }
+
+        private static void AnonymousTest()
+        {
+
+            // Klasa anonimowa
+            var userinfo = new 
+            {
+                FirstName = "Marcin",
+                LastName = "Sulecki",
+                Age = 18,
+                Weight = 65.5,
+            };
+
 
         }
 
