@@ -60,8 +60,7 @@ namespace CBB.HelpDesk.ConsoleClient
             };
 
 
-            Console.WriteLine(user.FirstName);
-            Console.WriteLine(user.LastName);
+            Console.WriteLine(user.FullName);
         }
     }
 }

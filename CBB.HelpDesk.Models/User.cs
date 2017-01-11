@@ -14,6 +14,14 @@ namespace CBB.HelpDesk.Models
 
         public string LastName { get; set; }
 
+        public string FullName
+        {
+            get
+            {
+                return String.Format("{0} {1}", FirstName, LastName); 
+            }
+        }
+
         public bool IsActive { get; set; }
 
         public User()
