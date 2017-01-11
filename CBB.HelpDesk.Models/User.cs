@@ -14,10 +14,13 @@ namespace CBB.HelpDesk.Models
 
         public string LastName { get; set; }
 
+
         public string FullName
         {
             get
             {
+
+                // C# 6.0
                 return $"{FirstName} {LastName}"; 
             }
         }
