@@ -11,8 +11,10 @@ namespace CBB.HelpDesk.ConsoleClient
     {
         static void Main(string[] args)
         {
-            EqualsTest();
 
+            IsHolidayTest();
+
+            EqualsTest();
 
             AnonymousTest();
 
@@ -23,7 +25,14 @@ namespace CBB.HelpDesk.ConsoleClient
             Console.ReadKey();
 
         }
-        
+
+        private static void IsHolidayTest()
+        {
+            DateTimeHelper helper = new DateTimeHelper();
+            var isHoliday = helper.IsHoliday(DateTime.Now);
+
+        }
+
         public static void Test(ref int x)
         {
             x = x + 1;
@@ -53,17 +62,20 @@ namespace CBB.HelpDesk.ConsoleClient
             };
 
             // var copyUser = user;
-
             User copyUser = (User) user.Clone();
+
+            if (copyUser == user)
+            {
+
+            }
+
+            
 
             Test(copyUser);
 
             var user2 = user;
 
-            if (user.Equals(user2))
-            {
-
-            }
+           
 
         }
 
