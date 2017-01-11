@@ -21,20 +21,29 @@ namespace CBB.HelpDesk.ConsoleClient
 
         private static void AddTicketTest()
         {
-            User user = new User("Marcin", "Sulecki");
-            user.UserId = 1;
+            User user = new User
+            {
+                UserId = 1,
+                FirstName = "Marcin",
+                LastName = "Sulecki",
+                IsActive = true,
+            };
 
-            Category category = new Category();
-            category.CategoryId = 1;
-            category.Name = "IT";
-            category.IsActive = true;
+            Category category = new Category
+            {
+                CategoryId = 1,
+                Name = "IT",
+                IsActive = true
+            };
 
-            Ticket issue = new Ticket();
-            issue.TicketId = 1;
-            issue.CreateDate = DateTime.Now;
-            issue.CreateUser = user;
-            issue.Priority = Priority.Normal;
-            issue.Category = category;
+            Ticket issue = new Ticket
+            {
+                TicketId = 1,
+                CreateDate = DateTime.Now,
+                CreateUser = user,
+                Priority = Priority.Normal,
+                Category = category
+            };
 
 
             Console.WriteLine(user.FirstName);

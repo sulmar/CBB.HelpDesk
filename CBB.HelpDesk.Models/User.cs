@@ -16,7 +16,13 @@ namespace CBB.HelpDesk.Models
 
         public bool IsActive { get; set; }
 
+        public User()
+        {
+
+        }
+
         public User(string firstName, string lastName, bool isActive = true)
+            : this()
         {
             FirstName = firstName;
             LastName = lastName;
