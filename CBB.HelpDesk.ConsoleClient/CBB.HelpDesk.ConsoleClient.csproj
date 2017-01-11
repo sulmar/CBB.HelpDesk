@@ -49,6 +49,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CBB.HelpDesk.Models\CBB.HelpDesk.Models.csproj">
+      <Project>{245A36C4-62AC-4579-89CA-7996C7E7C76A}</Project>
+      <Name>CBB.HelpDesk.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
