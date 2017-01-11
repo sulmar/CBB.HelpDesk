@@ -21,11 +21,8 @@ namespace CBB.HelpDesk.ConsoleClient
 
         private static void AddTicketTest()
         {
-            User user = new User();
+            User user = new User("Marcin", "Sulecki");
             user.UserId = 1;
-            user.FirstName = "Marcin";
-            user.LastName = "Sulecki";
-            user.IsActive = true;
 
             Category category = new Category();
             category.CategoryId = 1;
