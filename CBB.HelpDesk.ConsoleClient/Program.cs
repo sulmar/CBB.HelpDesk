@@ -1,9 +1,9 @@
-﻿using CBB.HelpDesk.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CBB.HelpDesk.Models;
 
 namespace CBB.HelpDesk.ConsoleClient
 {
@@ -11,6 +11,9 @@ namespace CBB.HelpDesk.ConsoleClient
     {
         static void Main(string[] args)
         {
+            EqualsTest();
+
+
             AnonymousTest();
 
             AddTicketTest();
@@ -18,6 +21,49 @@ namespace CBB.HelpDesk.ConsoleClient
             Console.WriteLine("Press any key to exit.");
 
             Console.ReadKey();
+
+        }
+        
+        public static void Test(ref int x)
+        {
+            x = x + 1;
+        }
+
+        public static void Test(User user)
+        {
+            user.FirstName = "Bartek";
+        }
+
+        private static void EqualsTest()
+        {
+
+            int x = 10;
+
+            Console.WriteLine(x);
+
+            Test(ref x);
+
+
+            Console.WriteLine(x);
+
+            var user = new User
+            {
+                FirstName = "Marcin",
+                LastName = "Sulecki"
+            };
+
+            // var copyUser = user;
+
+            User copyUser = (User) user.Clone();
+
+            Test(copyUser);
+
+            var user2 = user;
+
+            if (user.Equals(user2))
+            {
+
+            }
 
         }
 
@@ -60,7 +106,7 @@ namespace CBB.HelpDesk.ConsoleClient
             };
 
 
-            Console.WriteLine(user.FullName);
+            Console.WriteLine(user);
         }
     }
 }

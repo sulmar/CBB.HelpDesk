@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CBB.HelpDesk.Models
 {
-    public abstract class Base
+    public abstract class Base : Object
     {
     }
 }

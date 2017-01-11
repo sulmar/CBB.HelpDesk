@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CBB.HelpDesk.Models
 {
-    public class User : Base
+    public class User : Base, ICloneable
     {
         public int UserId { get; set; }
 
@@ -19,7 +19,6 @@ namespace CBB.HelpDesk.Models
         {
             get
             {
-
                 // C# 6.0
                 return $"{FirstName} {LastName}"; 
             }
@@ -38,6 +37,25 @@ namespace CBB.HelpDesk.Models
             FirstName = firstName;
             LastName = lastName;
             IsActive = isActive;
+        }
+
+
+        public override string ToString()
+        {
+            return FullName;
+        }
+
+        public object Clone()
+        {
+            var copyUser = new User
+            {
+                UserId = this.UserId,
+                FirstName = this.FirstName,
+                LastName = this.LastName,
+                IsActive = this.IsActive, 
+            };
+
+            return copyUser;
         }
     }
 }
