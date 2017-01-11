@@ -11,6 +11,7 @@ namespace CBB.HelpDesk.ConsoleClient
     {
         static void Main(string[] args)
         {
+            PrinterTest();
 
             IsHolidayTest();
 
@@ -24,6 +25,16 @@ namespace CBB.HelpDesk.ConsoleClient
 
             Console.ReadKey();
 
+        }
+
+        private static void PrinterTest()
+        {
+            var printer = new Printer();
+            printer.Print(10);
+
+            printer.Print("Hello World");
+
+            printer.Print(10.5);
         }
 
         private static void IsHolidayTest()
