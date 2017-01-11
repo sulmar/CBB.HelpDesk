@@ -18,7 +18,7 @@ namespace CBB.HelpDesk.Models
         {
             get
             {
-                return String.Format("{0} {1}", FirstName, LastName); 
+                return $"{FirstName} {LastName}"; 
             }
         }
 
