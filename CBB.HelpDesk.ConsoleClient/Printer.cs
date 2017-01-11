@@ -8,19 +8,11 @@ namespace CBB.HelpDesk.ConsoleClient
 {
     public class Printer
     {
-        public void Print(int item)
+        // Metoda generyczna
+        public void Print<TItem>(TItem item)
         {
             Console.WriteLine(item);
         }
 
-        public void Print(string item)
-        {
-            Console.WriteLine(item);
-        }
-
-        public void Print(DateTime item)
-        {
-            Console.WriteLine(item);
-        } 
     }
 }

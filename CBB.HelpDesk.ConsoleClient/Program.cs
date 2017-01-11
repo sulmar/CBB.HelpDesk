@@ -30,11 +30,13 @@ namespace CBB.HelpDesk.ConsoleClient
         private static void PrinterTest()
         {
             var printer = new Printer();
-            printer.Print(10);
 
-            printer.Print("Hello World");
+            printer.Print<int>(10);
 
-            printer.Print(10.5);
+            printer.Print<DateTime>(DateTime.Now);
+
+            printer.Print<string>("Hello World");
+
         }
 
         private static void IsHolidayTest()
