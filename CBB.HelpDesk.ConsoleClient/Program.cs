@@ -30,6 +30,9 @@ namespace CBB.HelpDesk.ConsoleClient
         {
             var isHoliday = DateTimeHelper.IsHoliday(DateTime.Now);
 
+            isHoliday = DateTime.Now.IsHoliday();
+
+
         }
 
         public static void Test(ref int x)

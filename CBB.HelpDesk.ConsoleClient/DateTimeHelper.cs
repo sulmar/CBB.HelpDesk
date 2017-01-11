@@ -14,4 +14,15 @@ namespace CBB.HelpDesk.ConsoleClient
                 || date.DayOfWeek == DayOfWeek.Sunday;
         }
     }
+
+    public static class DateTimeExtensions
+    {
+        // Metoda rozszerzająca (Extension method)
+        public static bool IsHoliday(this DateTime date)
+        {
+            return date.DayOfWeek == DayOfWeek.Saturday
+                || date.DayOfWeek == DayOfWeek.Sunday;
+        }
+    }
+
 }
