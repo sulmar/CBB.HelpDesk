@@ -23,6 +23,11 @@ namespace CBB.HelpDesk.ConsoleClient
             return date.DayOfWeek == DayOfWeek.Saturday
                 || date.DayOfWeek == DayOfWeek.Sunday;
         }
+
+        public static DateTime AddWorkingDays(this DateTime date, int days)
+        {
+            return date.AddDays(days);
+        }
     }
 
 }

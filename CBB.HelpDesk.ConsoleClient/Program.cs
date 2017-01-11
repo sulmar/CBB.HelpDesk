@@ -32,6 +32,7 @@ namespace CBB.HelpDesk.ConsoleClient
 
             isHoliday = DateTime.Now.IsHoliday();
 
+            var result = DateTime.Now.AddWorkingDays(4);
 
         }
 
