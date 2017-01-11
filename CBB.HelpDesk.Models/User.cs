@@ -47,15 +47,7 @@ namespace CBB.HelpDesk.Models
 
         public object Clone()
         {
-            var copyUser = new User
-            {
-                UserId = this.UserId,
-                FirstName = this.FirstName,
-                LastName = this.LastName,
-                IsActive = this.IsActive, 
-            };
-
-            return copyUser;
+            return this.MemberwiseClone();
         }
     }
 }
