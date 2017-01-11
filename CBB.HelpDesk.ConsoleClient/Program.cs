@@ -28,8 +28,7 @@ namespace CBB.HelpDesk.ConsoleClient
 
         private static void IsHolidayTest()
         {
-            DateTimeHelper helper = new DateTimeHelper();
-            var isHoliday = helper.IsHoliday(DateTime.Now);
+            var isHoliday = DateTimeHelper.IsHoliday(DateTime.Now);
 
         }
 

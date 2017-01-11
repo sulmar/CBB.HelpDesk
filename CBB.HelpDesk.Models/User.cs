@@ -49,5 +49,6 @@ namespace CBB.HelpDesk.Models
         {
             return this.MemberwiseClone();
         }
+
     }
 }

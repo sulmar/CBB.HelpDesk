@@ -8,7 +8,7 @@ namespace CBB.HelpDesk.ConsoleClient
 {
     public class DateTimeHelper
     {
-        public bool IsHoliday(DateTime date)
+        public static bool IsHoliday(DateTime date)
         {
             return date.DayOfWeek == DayOfWeek.Saturday 
                 || date.DayOfWeek == DayOfWeek.Sunday;
