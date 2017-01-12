@@ -16,6 +16,7 @@ namespace CBB.HelpDesk.ConsoleClient
     {
         static void Main(string[] args)
         {
+            ListTest();
 
             ArrayListTest();
 
@@ -41,6 +42,21 @@ namespace CBB.HelpDesk.ConsoleClient
             Console.WriteLine("Press any key to exit.");
 
             Console.ReadKey();
+
+        }
+
+        private static void ListTest()
+        {
+            List<User> users = new List<User>();
+
+            users.Add(new User { FirstName = "Marcin", LastName = "Sulecki" });
+            users.Add(new User { FirstName = "Bartek", LastName = "Sulecki" });
+            users.Add(new User { FirstName = "Kasia", LastName = "Sulecka" });
+
+            foreach (var user in users)
+            {
+                Console.WriteLine(user);
+            }
 
         }
 
