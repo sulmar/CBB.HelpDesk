@@ -37,5 +37,25 @@ namespace CBB.HelpDesk.Models
         public Status Status { get; set; }
 
 
+        public string FullTicket
+        {
+            get
+            {
+                return $"#{TicketId} - {Title} - {Description}";
+            }
+        }
+
+        public override string ToString()
+        {
+            return FullTicket;
+        }
+
+        public Ticket()
+        {
+            Status = Status.New;
+            CreateDate = DateTime.Now;
+            Priority = Priority.Normal;
+        }
+
     }
 }

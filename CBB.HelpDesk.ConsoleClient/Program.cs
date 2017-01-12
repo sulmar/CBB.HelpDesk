@@ -11,6 +11,9 @@ namespace CBB.HelpDesk.ConsoleClient
     {
         static void Main(string[] args)
         {
+            FormTicketTest();
+
+
             PrinterTest();
 
             IsHolidayTest();
@@ -24,6 +27,35 @@ namespace CBB.HelpDesk.ConsoleClient
             Console.WriteLine("Press any key to exit.");
 
             Console.ReadKey();
+
+        }
+
+        private static void FormTicketTest()
+        {
+            Console.WriteLine("Witaj w HelpDesk");
+
+            Console.WriteLine("Utwórz ticket");
+
+            Console.Write("Podaj tytuł: ");
+
+            var title = Console.ReadLine();
+
+            Console.Write("Podaj opis: ");
+
+            var description = Console.ReadLine();
+
+
+            var ticket = new Ticket
+            {
+                TicketId = 1,
+                Title = title,
+                Description = description,
+                Priority = Priority.High,
+            };
+
+
+            Console.WriteLine(ticket);
+
 
         }
 
