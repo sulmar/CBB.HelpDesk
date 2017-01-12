@@ -8,6 +8,7 @@ using System.IO;
 using CBB.HelpDesk.Interfaces;
 using CBB.HelpDesk.PekaoServices;
 using CBB.HelpDesk.AbcBankServices;
+using System.Collections;
 
 namespace CBB.HelpDesk.ConsoleClient
 {
@@ -15,6 +16,8 @@ namespace CBB.HelpDesk.ConsoleClient
     {
         static void Main(string[] args)
         {
+
+            ArrayListTest();
 
             ArrayTest();
 
@@ -45,7 +48,7 @@ namespace CBB.HelpDesk.ConsoleClient
         {
             User user1 = new User { FirstName = "Marcin", LastName = "Sulecki" };
 
-            User[] users = new User[1000000];
+            User[] users = new User[5];
 
             users[0] = user1;
             users[1] = new User { FirstName = "Bartek", LastName = "Sulecki" };
@@ -55,6 +58,20 @@ namespace CBB.HelpDesk.ConsoleClient
             foreach (var user in users)
             {
                 Console.WriteLine(user);
+            }
+        }
+
+
+        private static void ArrayListTest()
+        {
+            ArrayList users = new ArrayList(2);
+            users.Add(new User { FirstName = "Marcin", LastName = "Sulecki" });
+            users.Add(new User { FirstName = "Bartek", LastName = "Sulecki" });
+            users.Add(new User { FirstName = "Kasia", LastName = "Sulecka" });
+
+            foreach (var user in users)
+            {
+                Console.WriteLine( ((User) user).IsActive);
             }
         }
 
