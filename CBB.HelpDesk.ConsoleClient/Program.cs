@@ -15,6 +15,10 @@ namespace CBB.HelpDesk.ConsoleClient
     {
         static void Main(string[] args)
         {
+
+            ArrayTest();
+
+
             CheckedTest();
             
 
@@ -35,6 +39,23 @@ namespace CBB.HelpDesk.ConsoleClient
 
             Console.ReadKey();
 
+        }
+
+        private static void ArrayTest()
+        {
+            User user1 = new User { FirstName = "Marcin", LastName = "Sulecki" };
+
+            User[] users = new User[1000000];
+
+            users[0] = user1;
+            users[1] = new User { FirstName = "Bartek", LastName = "Sulecki" };
+            users[2] = new User { FirstName = "Kasia", LastName = "Sulecka" };
+
+
+            foreach (var user in users)
+            {
+                Console.WriteLine(user);
+            }
         }
 
         private static void CheckedTest()
