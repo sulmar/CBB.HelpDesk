@@ -7,6 +7,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CBB.HelpDesk.ConsoleClient"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CBB.HelpDesk.Models", "CBB.HelpDesk.Models\CBB.HelpDesk.Models.csproj", "{245A36C4-62AC-4579-89CA-7996C7E7C76A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CBB.HelpDesk.Interfaces", "CBB.HelpDesk.Interfaces\CBB.HelpDesk.Interfaces.csproj", "{2138F6EE-6319-47B6-ADB0-AD7A8A91FBE4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CBB.HelpDesk.PekaoServices", "CBB.HelpDesk.PekaoServices\CBB.HelpDesk.PekaoServices.csproj", "{6CD748AE-44C6-42EB-B7B9-0E46A151418C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CBB.HelpDesk.AbcBankServices", "CBB.HelpDesk.AbcBankServices\CBB.HelpDesk.AbcBankServices.csproj", "{F81F3C44-C2E0-4293-A2C0-EC60BB2F612A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +27,18 @@ Global
 		{245A36C4-62AC-4579-89CA-7996C7E7C76A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{245A36C4-62AC-4579-89CA-7996C7E7C76A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{245A36C4-62AC-4579-89CA-7996C7E7C76A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2138F6EE-6319-47B6-ADB0-AD7A8A91FBE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2138F6EE-6319-47B6-ADB0-AD7A8A91FBE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2138F6EE-6319-47B6-ADB0-AD7A8A91FBE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2138F6EE-6319-47B6-ADB0-AD7A8A91FBE4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CD748AE-44C6-42EB-B7B9-0E46A151418C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CD748AE-44C6-42EB-B7B9-0E46A151418C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CD748AE-44C6-42EB-B7B9-0E46A151418C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CD748AE-44C6-42EB-B7B9-0E46A151418C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F81F3C44-C2E0-4293-A2C0-EC60BB2F612A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F81F3C44-C2E0-4293-A2C0-EC60BB2F612A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F81F3C44-C2E0-4293-A2C0-EC60BB2F612A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F81F3C44-C2E0-4293-A2C0-EC60BB2F612A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
