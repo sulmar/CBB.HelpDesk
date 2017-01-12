@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CBB.HelpDesk.Models;
+using System.IO;
 
 namespace CBB.HelpDesk.ConsoleClient
 {
@@ -34,28 +35,37 @@ namespace CBB.HelpDesk.ConsoleClient
         {
             Console.WriteLine("Witaj w HelpDesk");
 
-            Console.WriteLine("Utwórz ticket");
 
-            Console.Write("Podaj tytuł: ");
-
-            var title = Console.ReadLine();
-
-            Console.Write("Podaj opis: ");
-
-            var description = Console.ReadLine();
-
-
-            var ticket = new Ticket
+            while (true)
             {
-                TicketId = 1,
-                Title = title,
-                Description = description,
-                Priority = Priority.High,
-            };
+
+                Console.WriteLine("Utwórz ticket");
+
+                Console.Write("Podaj tytuł: ");
+
+                var title = Console.ReadLine();
+
+                Console.Write("Podaj opis: ");
+
+                var description = Console.ReadLine();
 
 
-            Console.WriteLine(ticket);
+                var ticket = new Ticket
+                {
+                    TicketId = 1,
+                    Title = title,
+                    Description = description,
+                    Priority = Priority.High,
+                };
 
+                var stream = new StreamWriter("tickets.txt", true);
+
+                stream.WriteLine($"{ticket.TicketId} | {ticket.Title} | {ticket.Description}");
+
+                stream.Close();
+
+                Console.WriteLine(ticket);
+            }
 
         }
 
