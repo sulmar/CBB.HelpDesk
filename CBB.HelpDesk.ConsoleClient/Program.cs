@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using CBB.HelpDesk.Models;
 using System.IO;
+using CBB.HelpDesk.Interfaces;
+using CBB.HelpDesk.PekaoServices;
+using CBB.HelpDesk.AbcBankServices;
 
 namespace CBB.HelpDesk.ConsoleClient
 {
@@ -12,6 +15,9 @@ namespace CBB.HelpDesk.ConsoleClient
     {
         static void Main(string[] args)
         {
+            CheckedTest();
+            
+
             FormTicketTest();
 
 
@@ -29,6 +35,21 @@ namespace CBB.HelpDesk.ConsoleClient
 
             Console.ReadKey();
 
+        }
+
+        private static void CheckedTest()
+        {
+            byte x = 255;
+
+            x++;
+
+            checked
+            {
+                x++;
+                x++;
+            }
+
+            Console.WriteLine(x);
         }
 
         private static void FormTicketTest()
@@ -50,21 +71,40 @@ namespace CBB.HelpDesk.ConsoleClient
                 var description = Console.ReadLine();
 
 
+                Console.Write("Podaj lokalizację: ");
+
+                var location = Console.ReadLine();
+
                 var ticket = new Ticket
                 {
                     TicketId = 1,
                     Title = title,
                     Description = description,
                     Priority = Priority.High,
+                    Location = location
                 };
 
-                var stream = new StreamWriter("tickets.txt", true);
 
-                stream.WriteLine($"{ticket.TicketId} | {ticket.Title} | {ticket.Description}");
+                ITicketsService ticketsService = TicketsServiceFactory.Create(ticket.Location);
 
-                stream.Close();
+                ticketsService.Add(ticket);
 
-                Console.WriteLine(ticket);
+
+
+                try
+                {
+                    ticketsService.Send(ticket);
+                }
+
+                catch(NotSupportedException)
+                {
+                    Console.WriteLine("Nie obsługiwane");
+                }
+                catch(Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+
             }
 
         }

@@ -22,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -47,14 +48,27 @@
     <Compile Include="Printer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TicketsServiceFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CBB.HelpDesk.AbcBankServices\CBB.HelpDesk.AbcBankServices.csproj">
+      <Project>{F81F3C44-C2E0-4293-A2C0-EC60BB2F612A}</Project>
+      <Name>CBB.HelpDesk.AbcBankServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CBB.HelpDesk.Interfaces\CBB.HelpDesk.Interfaces.csproj">
+      <Project>{2138f6ee-6319-47b6-adb0-ad7a8a91fbe4}</Project>
+      <Name>CBB.HelpDesk.Interfaces</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CBB.HelpDesk.Models\CBB.HelpDesk.Models.csproj">
       <Project>{245A36C4-62AC-4579-89CA-7996C7E7C76A}</Project>
       <Name>CBB.HelpDesk.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CBB.HelpDesk.PekaoServices\CBB.HelpDesk.PekaoServices.csproj">
+      <Project>{6cd748ae-44c6-42eb-b7b9-0e46a151418c}</Project>
+      <Name>CBB.HelpDesk.PekaoServices</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
