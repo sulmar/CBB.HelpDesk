@@ -16,6 +16,8 @@ namespace CBB.HelpDesk.ConsoleClient
     {
         static void Main(string[] args)
         {
+            GetActiveUsersTest();
+
             LinqTest();
 
             ListTest();
@@ -89,15 +91,44 @@ namespace CBB.HelpDesk.ConsoleClient
 
         }
 
+
+        private static void GetActiveUsersTest()
+        {
+            IList<User> users = new List<User>()
+            {
+                new User { FirstName = "Marcin", LastName = "Sulecki", IsActive = true },
+                new User { FirstName = "Bartek", LastName = "Sulecki", IsActive = true },
+                new User { FirstName = "Kasia", LastName = "Sulecka", IsActive = false },
+                new User { FirstName = "Kasia", LastName = "Nowak", IsActive = true },
+                new User { FirstName = "Adam", LastName = "Kowalski", IsActive = false },
+            };
+
+            // Znajdz tylko aktywnych uzytkowników 
+
+            var activeUsers = users
+                .Where(user => user.IsActive)
+                .OrderBy(user => user.LastName)
+                .ThenBy(user => user.FirstName)
+                .ToList();
+
+
+            var activeUsers2 = (from user in users
+                               where user.IsActive
+                               orderby user.LastName, user.FirstName
+                               select user)
+                               .ToList();
+                
+        }
+
         private static void LinqTest()
         {
             IList<User> users = new List<User>()
             {
-                new User { FirstName = "Marcin", LastName = "Sulecki" },
-                new User { FirstName = "Bartek", LastName = "Sulecki" },
-                new User { FirstName = "Kasia", LastName = "Sulecka" },
-                new User { FirstName = "Kasia", LastName = "Nowak" },
-                new User { FirstName = "Adam", LastName = "Kowalski" },
+                new User { FirstName = "Marcin", LastName = "Sulecki", IsActive = true },
+                new User { FirstName = "Bartek", LastName = "Sulecki", IsActive = true },
+                new User { FirstName = "Kasia", LastName = "Sulecka", IsActive = false },
+                new User { FirstName = "Kasia", LastName = "Nowak", IsActive = true },
+                new User { FirstName = "Adam", LastName = "Kowalski", IsActive = false },
             };
 
             // znajdz uzytkownikow o nazwisku Sulecki
