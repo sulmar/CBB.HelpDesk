@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CBB.HelpDesk.Models;
@@ -8,6 +7,7 @@ using System.IO;
 using CBB.HelpDesk.Interfaces;
 using CBB.HelpDesk.PekaoServices;
 using CBB.HelpDesk.AbcBankServices;
+using System.Linq;
 using System.Collections;
 
 namespace CBB.HelpDesk.ConsoleClient
@@ -16,6 +16,8 @@ namespace CBB.HelpDesk.ConsoleClient
     {
         static void Main(string[] args)
         {
+            LinqTest();
+
             ListTest();
 
             ArrayListTest();
@@ -98,28 +100,48 @@ namespace CBB.HelpDesk.ConsoleClient
                 new User { FirstName = "Adam", LastName = "Kowalski" },
             };
 
-            
-            foreach (var user in users)
-            {
-                Console.WriteLine(user);
-            }
-
             // znajdz uzytkownikow o nazwisku Sulecki
 
             // SQL - deklaratywny - co chcesz 
             // select * from dbo.Users where LastName = 'Sulecki'
 
             // C# - imperatywne - jak to masz zrobić
-            var foundUsers = new List<User>();
 
 
-            foreach (var user in users)
+            bool isFilter = true;
+
+            // select FirstName as Imie, LastName as Nazwisko from dbo.Users
+            // where LastName = 'Sulecki'
+            // order by FirstName
+
+            var foundUsers = users
+                .Where(user => user.LastName == "Sulecki")
+                .OrderBy(user => user.FirstName)
+                .Select(user => new { Imie = user.FirstName, Nazwisko = user.LastName });
+
+            if (isFilter)
             {
-                if (user.LastName == "Sulecki")
-                {
-                    foundUsers.Add(user);
-                }
+                foundUsers = foundUsers
+                    .Where(user => user.Imie.StartsWith("M"));
             }
+                
+          //  var users3 = foundUsers;
+
+
+            var foundUsers2 = from user in users
+                              where user.LastName == "Sulecki"
+                              orderby user.FirstName
+                              select new { user.FirstName, user.LastName };
+
+            //var foundUsers = new List<User>();
+
+            //foreach (var user in users)
+            //{
+            //    if (user.LastName == "Sulecki")
+            //    {
+            //        foundUsers.Add(user);
+            //    }
+            //}
 
             Console.WriteLine("Znaleziono użytkowników:");
 
