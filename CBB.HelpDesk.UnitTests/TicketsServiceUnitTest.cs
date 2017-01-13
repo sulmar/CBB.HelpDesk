@@ -26,5 +26,22 @@ namespace CBB.HelpDesk.UnitTests
             Assert.IsTrue(tickets.All(t => !string.IsNullOrEmpty(t.Description)), "Brak opisu");
 
         }
+
+        [TestMethod]
+        public void GetByIdTest()
+        {
+            var ticketId = 3;
+
+            ITicketsService ticketsService = new PekaoTicketsService();
+
+            var ticket = ticketsService.Get(ticketId);
+
+            Assert.IsNotNull(ticket);
+
+            Assert.AreEqual(ticketId, ticket.TicketId);
+
+            Assert.IsTrue(!string.IsNullOrEmpty(ticket.Title));
+
+        }
     }
 }

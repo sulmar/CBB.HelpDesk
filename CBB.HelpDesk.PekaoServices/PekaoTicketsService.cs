@@ -68,7 +68,7 @@ namespace CBB.HelpDesk.PekaoServices
 
         public Ticket Get(int ticketId)
         {
-            throw new NotImplementedException();
+            return tickets.Single(t => t.TicketId == ticketId);
         }
 
         public void Remove(int ticketId)
