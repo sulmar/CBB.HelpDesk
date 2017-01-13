@@ -16,6 +16,10 @@ namespace CBB.HelpDesk.ConsoleClient
     {
         static void Main(string[] args)
         {
+            GroupByIsActiveAndFirstNameTest();
+
+            GroupByFirstNameTest();
+
             GroupByTest();
 
             CountActiveUsersTest();
@@ -113,6 +117,13 @@ namespace CBB.HelpDesk.ConsoleClient
             };
 
 
+            var query = users.GroupBy(user => user.FirstName)
+                .Select(g => new { Grupa = g.Key, Ilosc = g.Count() });
+
+            foreach (var group in query)
+            {
+                Console.WriteLine($"Imię: {group.Grupa} Ilosc: {group.Ilosc}" );
+            }
 
         }
 
@@ -122,6 +133,29 @@ namespace CBB.HelpDesk.ConsoleClient
         // |    true  | Kasia     |      5 |
         // |    false | Marcin    |      3 |
         // |    true  | Marcin    |      2 |
+
+        private static void GroupByIsActiveAndFirstNameTest()
+        {
+            IList<User> users = new List<User>()
+            {
+                new User { UserId = 1, FirstName = "Marcin", LastName = "Sulecki", IsActive = true },
+                new User { UserId = 2, FirstName = "Bartek", LastName = "Sulecki", IsActive = true },
+                new User { UserId = 3, FirstName = "Kasia", LastName = "Sulecka", IsActive = false },
+                new User { UserId = 4, FirstName = "Kasia", LastName = "Nowak", IsActive = true },
+                new User { UserId = 5, FirstName = "Marcin", LastName = "Kowalski", IsActive = false },
+            };
+
+
+            var query = users.GroupBy(user => new { user.IsActive, user.FirstName })
+                .Select(g => new { Grupa = g.Key, Ilosc = g.Count() });
+
+            foreach (var group in query)
+            {
+                Console.WriteLine($"Aktywny: {group.Grupa.IsActive} Imię: {group.Grupa.FirstName} Ilosc: {group.Ilosc}");
+            }
+
+        }
+
 
         private static void GroupByTest()
         {
