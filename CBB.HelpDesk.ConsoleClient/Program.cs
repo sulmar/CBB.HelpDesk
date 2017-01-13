@@ -16,6 +16,8 @@ namespace CBB.HelpDesk.ConsoleClient
     {
         static void Main(string[] args)
         {
+            CountActiveUsersTest();
+
             GetActiveUsersTest();
 
             LinqTest();
@@ -91,6 +93,34 @@ namespace CBB.HelpDesk.ConsoleClient
 
         }
 
+
+        /// <summary>
+        /// Funkcje agregujące
+        /// </summary>
+        private static void CountActiveUsersTest()
+        {
+            IList<User> users = new List<User>()
+            {
+                new User { UserId = 1, FirstName = "Marcin", LastName = "Sulecki", IsActive = true },
+                new User { UserId = 2, FirstName = "Bartek", LastName = "Sulecki", IsActive = true },
+                new User { UserId = 3, FirstName = "Kasia", LastName = "Sulecka", IsActive = false },
+                new User { UserId = 4, FirstName = "Kasia", LastName = "Nowak", IsActive = true },
+                new User { UserId = 5, FirstName = "Adam", LastName = "Kowalski", IsActive = false },
+            };
+
+            // Znajdz tylko aktywnych uzytkowników 
+
+            var countActiveUsers = users
+                .Where(user => user.IsActive)
+                .Count();
+
+            var sumActiveUsers = users
+                .Where(user => user.IsActive)
+                .Sum(user => user.UserId);
+
+            var maxId = users.Max(user => user.UserId);
+
+        }
 
         private static void GetActiveUsersTest()
         {
