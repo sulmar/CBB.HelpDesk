@@ -16,6 +16,8 @@ namespace CBB.HelpDesk.ConsoleClient
     {
         static void Main(string[] args)
         {
+            FindTest();
+
             UnionTest();
 
             GroupByIsActiveAndFirstNameTest();
@@ -60,6 +62,40 @@ namespace CBB.HelpDesk.ConsoleClient
         }
 
 
+
+        private static void FindTest()
+        {
+            IList<User> users = new List<User>()
+            {
+                new User { UserId = 1, FirstName = "Marcin", LastName = "Sulecki", IsActive = true },
+                new User { UserId = 2, FirstName = "Bartek", LastName = "Sulecki", IsActive = true },
+                new User { UserId = 3, FirstName = "Kasia", LastName = "Sulecka", IsActive = false },
+                new User { UserId = 4, FirstName = "Kasia", LastName = "Nowak", IsActive = true },
+                new User { UserId = 5, FirstName = "Marcin", LastName = "Kowalski", IsActive = false },
+                new User { UserId = 2, FirstName = "Bartek", LastName = "Nowak", IsActive = false },
+            };
+
+
+            var user = users.Where(u => u.UserId == 5).First();
+
+
+            var user2 = users.FirstOrDefault(u => u.LastName == "Smith");
+
+
+            // First - pobiera pierwszy element. Jeśli nie ma żadnego to zwróci błąd (exception)
+            // FirstOrDefault - pobiera pierwszy element. Jeśli nie ma żadnego to null
+            // Single - pobiera pojedynczy element. Jeśli jest ich więcej lub nie ma żadnego to zwróci błąd
+            // SingleOrDefault -  pobiera pojedynczy element. Jeśli jest ich więcej to zwróci błąd, a jeśli nie ma to zwróci null
+
+            var query = users.First(u => u.UserId == 1000);
+
+
+            if (user2==null)
+            {
+                Console.WriteLine("Nie znaleziono");
+            }
+        }
+
         private static void UnionTest()
         {
             IList<User> users = new List<User>()
@@ -92,6 +128,7 @@ namespace CBB.HelpDesk.ConsoleClient
             var kasie = users.Where(u => u.FirstName == "Kasia");
 
             var query4 = active.Intersect(kasie);
+
 
 
         }
