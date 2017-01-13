@@ -45,18 +45,45 @@ namespace CBB.HelpDesk.ConsoleClient
 
         }
 
+
         private static void ListTest()
         {
-            List<User> users = new List<User>();
-
+            IList<User> users = new List<User>();
             users.Add(new User { FirstName = "Marcin", LastName = "Sulecki" });
             users.Add(new User { FirstName = "Bartek", LastName = "Sulecki" });
             users.Add(new User { FirstName = "Kasia", LastName = "Sulecka" });
+            users.Add(new User { FirstName = "Kasia", LastName = "Nowak" });
+            users.Add(new User { FirstName = "Adam", LastName = "Kowalski" });
 
             foreach (var user in users)
             {
                 Console.WriteLine(user);
             }
+
+            // znajdz uzytkownikow o nazwisku Sulecki
+
+            // SQL - deklaratywny - co chcesz 
+            // select * from dbo.Users where LastName = 'Sulecki'
+
+            // C# - imperatywne - jak to masz zrobić
+            var foundUsers = new List<User>();
+
+
+            foreach (var user in users)
+            {
+                if (user.LastName == "Sulecki")
+                {
+                    foundUsers.Add(user);
+                }
+            }
+
+            Console.WriteLine("Znaleziono użytkowników:");
+
+            foreach (var user in foundUsers)
+            {
+                Console.WriteLine(user);
+            }
+            
 
         }
 
