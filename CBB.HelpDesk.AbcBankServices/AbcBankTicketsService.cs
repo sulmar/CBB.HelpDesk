@@ -54,5 +54,10 @@ namespace CBB.HelpDesk.AbcBankServices
 
             Console.WriteLine($"Sending sms... {ticket.Title}");
         }
+
+        public IList<Ticket> Get()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CBB.HelpDesk.PekaoServices"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CBB.HelpDesk.AbcBankServices", "CBB.HelpDesk.AbcBankServices\CBB.HelpDesk.AbcBankServices.csproj", "{F81F3C44-C2E0-4293-A2C0-EC60BB2F612A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CBB.HelpDesk.UnitTests", "CBB.HelpDesk.UnitTests\CBB.HelpDesk.UnitTests.csproj", "{1D0B4AE2-1DCF-41E3-BDCA-9A21127A3131}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CBB.PekaoCalculator", "CBB.PekaoCalculator\CBB.PekaoCalculator.csproj", "{7B243776-94CD-4EC1-9E76-A2307851B89D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{F81F3C44-C2E0-4293-A2C0-EC60BB2F612A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F81F3C44-C2E0-4293-A2C0-EC60BB2F612A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F81F3C44-C2E0-4293-A2C0-EC60BB2F612A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D0B4AE2-1DCF-41E3-BDCA-9A21127A3131}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D0B4AE2-1DCF-41E3-BDCA-9A21127A3131}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D0B4AE2-1DCF-41E3-BDCA-9A21127A3131}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D0B4AE2-1DCF-41E3-BDCA-9A21127A3131}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B243776-94CD-4EC1-9E76-A2307851B89D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B243776-94CD-4EC1-9E76-A2307851B89D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B243776-94CD-4EC1-9E76-A2307851B89D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B243776-94CD-4EC1-9E76-A2307851B89D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

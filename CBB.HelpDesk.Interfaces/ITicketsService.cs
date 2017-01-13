@@ -9,6 +9,9 @@ namespace CBB.HelpDesk.Interfaces
 {
     public interface ITicketsService
     {
+
+        IList<Ticket> Get();
+
         Ticket Get(int ticketId);
 
         void Add(Ticket ticket);
