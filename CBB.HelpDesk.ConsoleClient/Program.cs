@@ -16,6 +16,8 @@ namespace CBB.HelpDesk.ConsoleClient
     {
         static void Main(string[] args)
         {
+            GroupByTest();
+
             CountActiveUsersTest();
 
             GetActiveUsersTest();
@@ -90,6 +92,80 @@ namespace CBB.HelpDesk.ConsoleClient
                 Console.WriteLine(user);
             }
             
+
+        }
+
+        // SQL:
+        // Pogrupuj użytkowników wg imienia i policz ich ilość w każdej grupie
+
+        // | Imie      | Ilosc |
+        // | Kasia     |      2 |
+        // | Marcin    |      3 |
+        private static void GroupByFirstNameTest()
+        {
+            IList<User> users = new List<User>()
+            {
+                new User { UserId = 1, FirstName = "Marcin", LastName = "Sulecki", IsActive = true },
+                new User { UserId = 2, FirstName = "Bartek", LastName = "Sulecki", IsActive = true },
+                new User { UserId = 3, FirstName = "Kasia", LastName = "Sulecka", IsActive = false },
+                new User { UserId = 4, FirstName = "Kasia", LastName = "Nowak", IsActive = true },
+                new User { UserId = 5, FirstName = "Marcin", LastName = "Kowalski", IsActive = false },
+            };
+
+
+
+        }
+
+
+        // | IsActive | Imie      | Ilosc  |
+        // |    false | Kasia     |      2 |
+        // |    true  | Kasia     |      5 |
+        // |    false | Marcin    |      3 |
+        // |    true  | Marcin    |      2 |
+
+        private static void GroupByTest()
+        {
+            IList<User> users = new List<User>()
+            {
+                new User { UserId = 1, FirstName = "Marcin", LastName = "Sulecki", IsActive = true },
+                new User { UserId = 2, FirstName = "Bartek", LastName = "Sulecki", IsActive = true },
+                new User { UserId = 3, FirstName = "Kasia", LastName = "Sulecka", IsActive = false },
+                new User { UserId = 4, FirstName = "Kasia", LastName = "Nowak", IsActive = true },
+                new User { UserId = 5, FirstName = "Adam", LastName = "Kowalski", IsActive = false },
+            };
+
+            // SQL:
+            // Pogrupuj użytkowników wg aktywności i policz ich ilość w każdej grupie
+
+            // | IsActive | Count |
+            // | true     |     2 |
+            // | false    |     3 |
+
+            // select IsActive, count(*) from dbo.Users
+            // group by IsActive 
+
+            var query = users
+                .GroupBy(user => user.IsActive)
+                .Select(g => new { Grupa = g.Key, Uzytkownicy = g })
+                .ToList();
+
+            foreach (var group  in query)
+            {
+                Console.WriteLine("-------------------");
+                Console.WriteLine($"Grupa: {group.Grupa}");
+                Console.WriteLine("-------------------");
+
+                foreach (var user in group.Uzytkownicy)
+                {
+                    Console.WriteLine(user);
+                }
+            }
+
+            // Podsumowanie ilości w grupach
+            var query2 = users
+               .GroupBy(user => user.IsActive)
+               .Select(g => new { Grupa = g.Key, Ilosc = g.Count() })
+               .ToList();
 
         }
 
