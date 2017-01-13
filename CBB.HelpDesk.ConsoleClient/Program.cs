@@ -16,6 +16,8 @@ namespace CBB.HelpDesk.ConsoleClient
     {
         static void Main(string[] args)
         {
+            UnionTest();
+
             GroupByIsActiveAndFirstNameTest();
 
             GroupByFirstNameTest();
@@ -57,6 +59,42 @@ namespace CBB.HelpDesk.ConsoleClient
 
         }
 
+
+        private static void UnionTest()
+        {
+            IList<User> users = new List<User>()
+            {
+                new User { UserId = 1, FirstName = "Marcin", LastName = "Sulecki", IsActive = true },
+                new User { UserId = 2, FirstName = "Bartek", LastName = "Sulecki", IsActive = true },
+                new User { UserId = 3, FirstName = "Kasia", LastName = "Sulecka", IsActive = false },
+                new User { UserId = 4, FirstName = "Kasia", LastName = "Nowak", IsActive = true },
+                new User { UserId = 5, FirstName = "Marcin", LastName = "Kowalski", IsActive = false },
+                new User { UserId = 2, FirstName = "Bartek", LastName = "Nowak", IsActive = false },
+            };
+
+            var women = users.Where(u => u.FirstName.EndsWith("a"));
+
+            var man = users.Where( u => u.IsActive && (u.FirstName == "Marcin" || u.FirstName == "Bartek"));
+
+            var query = women.Union(man);
+
+
+            var active = users.Where(u => u.IsActive);
+
+            var query2 = women.Union(active);
+
+
+            var barteks = users.Where(u => u.FirstName == "Bartek");
+
+            var query3 = users.Except(barteks);
+
+
+            var kasie = users.Where(u => u.FirstName == "Kasia");
+
+            var query4 = active.Intersect(kasie);
+
+
+        }
 
         private static void ListTest()
         {
