@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CBB.HelpDesk.UnitTests", "C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CBB.PekaoCalculator", "CBB.PekaoCalculator\CBB.PekaoCalculator.csproj", "{7B243776-94CD-4EC1-9E76-A2307851B89D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CBB.HelpDesk.Website", "CBB.HelpDesk.Website\CBB.HelpDesk.Website.csproj", "{F7B0E398-9184-466D-8E4C-50A27A23FBA2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{7B243776-94CD-4EC1-9E76-A2307851B89D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B243776-94CD-4EC1-9E76-A2307851B89D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B243776-94CD-4EC1-9E76-A2307851B89D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7B0E398-9184-466D-8E4C-50A27A23FBA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7B0E398-9184-466D-8E4C-50A27A23FBA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7B0E398-9184-466D-8E4C-50A27A23FBA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7B0E398-9184-466D-8E4C-50A27A23FBA2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
