@@ -51,7 +51,29 @@
   <ItemGroup>
     <Compile Include="DbPekaoTicketsService.cs" />
     <Compile Include="HelpDeskContext.cs" />
+    <Compile Include="Migrations\201701141115484_InitialCreate.cs" />
+    <Compile Include="Migrations\201701141115484_InitialCreate.Designer.cs">
+      <DependentUpon>201701141115484_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701141340292_AddAgeToUser.cs" />
+    <Compile Include="Migrations\201701141340292_AddAgeToUser.Designer.cs">
+      <DependentUpon>201701141340292_AddAgeToUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701141408523_AddGenderToUser.cs" />
+    <Compile Include="Migrations\201701141408523_AddGenderToUser.Designer.cs">
+      <DependentUpon>201701141408523_AddGenderToUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201701141411106_RenameAgeOnUser.cs" />
+    <Compile Include="Migrations\201701141411106_RenameAgeOnUser.Designer.cs">
+      <DependentUpon>201701141411106_RenameAgeOnUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CBB.HelpDesk.Interfaces\CBB.HelpDesk.Interfaces.csproj">
@@ -66,6 +88,27 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201701141115484_InitialCreate.resx">
+      <DependentUpon>201701141115484_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701141340292_AddAgeToUser.resx">
+      <DependentUpon>201701141340292_AddAgeToUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701141408523_AddGenderToUser.resx">
+      <DependentUpon>201701141408523_AddGenderToUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701141411106_RenameAgeOnUser.resx">
+      <DependentUpon>201701141411106_RenameAgeOnUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Scripts\UpdateGender.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

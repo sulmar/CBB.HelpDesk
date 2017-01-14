@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CBB.HelpDesk.Models;
 using System.Data.Entity;
+using CBB.HelpDesk.DbPekaoServices.Properties;
 
 namespace CBB.HelpDesk.DbPekaoServices
 {
@@ -43,6 +44,11 @@ namespace CBB.HelpDesk.DbPekaoServices
             var ticket = context.Tickets
                 .Include(t=> t.Category)
                 .Include(t=> t.CreateUser)
+                // .Include("Category")
+               // .Include(nameof(Category))
+                // .Include("CreateUser.Address.City")
+                // .Include("CreateUser.Addresses")
+                // .Include($"{nameof(Category)}.{nameof(Category.Name)}")
                 .Single(t => t.TicketId == ticketId);
 
             return ticket;
@@ -55,7 +61,9 @@ namespace CBB.HelpDesk.DbPekaoServices
 
         public void Send(Ticket ticket)
         {
-            throw new NotImplementedException();
+            var context = new HelpDeskContext();
+
+            context.Database.ExecuteSqlCommand(Resources.UpdateGender);
         }
 
         public void Update(Ticket ticket)
