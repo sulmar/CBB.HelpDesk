@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CBB.HelpDesk.Models;
+using System.Data.Entity;
 
 namespace CBB.HelpDesk.DbPekaoServices
 {
@@ -37,7 +38,12 @@ namespace CBB.HelpDesk.DbPekaoServices
         {
             var context = new HelpDeskContext();
 
-            var ticket = context.Tickets.Single(t => t.TicketId == ticketId);
+
+            // Eadger loading
+            var ticket = context.Tickets
+                .Include(t=> t.Category)
+                .Include(t=> t.CreateUser)
+                .Single(t => t.TicketId == ticketId);
 
             return ticket;
         }
