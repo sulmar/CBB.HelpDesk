@@ -59,5 +59,10 @@ namespace CBB.HelpDesk.AbcBankServices
         {
             throw new NotImplementedException();
         }
+
+        public IList<Ticket> Get(TicketsSearchCriteria criteria)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

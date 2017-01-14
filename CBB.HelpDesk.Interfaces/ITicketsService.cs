@@ -14,6 +14,12 @@ namespace CBB.HelpDesk.Interfaces
 
         Ticket Get(int ticketId);
 
+
+        // IList<Ticket> Get(string title, string description, DateTime? from, DateTime? to);
+
+        IList<Ticket> Get(TicketsSearchCriteria criteria);
+
+
         void Add(Ticket ticket);
 
         void Update(Ticket ticket);
