@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using CBB.HelpDesk.Models;
 using System.Data.Entity;
 using CBB.HelpDesk.DbPekaoServices.Properties;
+using System.Data.SqlClient;
 
 namespace CBB.HelpDesk.DbPekaoServices
 {
@@ -63,7 +64,23 @@ namespace CBB.HelpDesk.DbPekaoServices
         {
             var context = new HelpDeskContext();
 
-            context.Database.ExecuteSqlCommand(Resources.UpdateGender);
+            // context.Database.ExecuteSqlCommand(Resources.UpdateGender);
+
+            Console.Write("Podaj userId: ");
+            var userId = Console.ReadLine();
+
+            var userIdParameter = new SqlParameter("@UserId", userId);
+
+            var sql = "UPDATE Users SET Gender = 1 WHERE UserId = @UserId";
+
+            context.Database.ExecuteSqlCommand(sql, userIdParameter);
+
+
+
+            // SQL Injection
+            //var sql = "UPDATE Users SET Gender = 1 WHERE UserId = " + userId;
+            //context.Database.ExecuteSqlCommand(sql);
+
         }
 
         public void Update(Ticket ticket)
