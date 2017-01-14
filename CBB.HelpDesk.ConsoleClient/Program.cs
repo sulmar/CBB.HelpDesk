@@ -9,13 +9,18 @@ using CBB.HelpDesk.PekaoServices;
 using CBB.HelpDesk.AbcBankServices;
 using System.Linq;
 using System.Collections;
+using NLog;
 
 namespace CBB.HelpDesk.ConsoleClient
 {
     class Program
     {
+        private static Logger logger = LogManager.GetCurrentClassLogger();
+
         static void Main(string[] args)
         {
+            NLogTest();
+
             FindTest();
 
             UnionTest();
@@ -62,6 +67,17 @@ namespace CBB.HelpDesk.ConsoleClient
         }
 
 
+        private static void NLogTest()
+        {
+            logger.Info("Application version 1.0 started.");
+
+            logger.Trace("Śledzenie");
+
+            logger.Warn("Ostrzeżenie");
+
+            logger.Error("Coś poszło nie tak");
+
+        }
 
         private static void FindTest()
         {
