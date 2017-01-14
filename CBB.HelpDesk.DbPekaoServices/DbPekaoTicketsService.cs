@@ -60,6 +60,19 @@ namespace CBB.HelpDesk.DbPekaoServices
             throw new NotImplementedException();
         }
 
+        private void SqlProcedureQuery()
+        {
+            var context = new HelpDeskContext();
+
+            var lastName = "Sulecki";
+
+            var lastNameParameter = new SqlParameter("@LastName", lastName);
+
+            var sql = "uspGetUsersByLastName @LastName";
+
+            var users = context.Database.SqlQuery<User>(sql, lastNameParameter).ToList();
+        }
+
         // Pobranie danych za pomocą SQL
         private void SqlQuery()
         {
@@ -76,6 +89,8 @@ namespace CBB.HelpDesk.DbPekaoServices
 
         public void Send(Ticket ticket)
         {
+            SqlProcedureQuery();
+
             SqlQuery();
 
             ExecuteSql();
