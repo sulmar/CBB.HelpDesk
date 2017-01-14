@@ -19,5 +19,12 @@ namespace CBB.HelpDesk.Website.Controllers
 
             return View(tickets);
         }
+
+        public ActionResult Edit(int id)
+        {
+            var ticket = TicketsService.Get(id);
+
+            return View(ticket);
+        }
     }
 }
