@@ -33,6 +33,8 @@ namespace CBB.HelpDesk.Models
 
         public string Location { get; set; }
 
+        public IList<Comment> Comments { get; set; }
+
 
         public Status Status { get; set; }
 

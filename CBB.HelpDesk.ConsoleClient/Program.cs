@@ -10,6 +10,7 @@ using CBB.HelpDesk.AbcBankServices;
 using System.Linq;
 using System.Collections;
 using NLog;
+using CBB.HelpDesk.DbPekaoServices;
 
 namespace CBB.HelpDesk.ConsoleClient
 {
@@ -19,6 +20,12 @@ namespace CBB.HelpDesk.ConsoleClient
 
         static void Main(string[] args)
         {
+            GetTicketTest();
+
+            AddTicketDbTest();
+
+
+
             NLogTest();
 
             FindTest();
@@ -66,6 +73,29 @@ namespace CBB.HelpDesk.ConsoleClient
 
         }
 
+        private static void GetTicketTest()
+        {
+            ITicketsService ticketsServce = new DbPekaoTicketsService();
+            var ticket = ticketsServce.Get(2);
+        }
+
+        private static void AddTicketDbTest()
+        {
+            var ticket = new Ticket
+            {
+                Title = "Awaria",
+                Description = "Opis błędu...",
+                CreateDate = DateTime.Now,
+                CreateUser = new User { UserId = 1, FirstName = "Kasia", LastName = "" },
+                Priority = Priority.Normal,
+                Category = new Category { CategoryId = 1, Name = "IT" },
+                UpdateDate = DateTime.Now,
+            };
+
+            ITicketsService ticketsService = new DbPekaoTicketsService();
+
+            ticketsService.Add(ticket);
+        }
 
         private static void NLogTest()
         {
