@@ -116,6 +116,32 @@ namespace CBB.HelpDesk.PekaoServices
         {
             throw new NotImplementedException();
         }
+
+        public IList<Ticket> Get(TicketsSearchCriteria criteria)
+        {
+
+            if (!string.IsNullOrEmpty(criteria.Title))
+            {
+                tickets = tickets.Where(t => t.Title == criteria.Title).ToList();
+            }
+
+            if (!string.IsNullOrEmpty(criteria.Description))
+            {
+                tickets = tickets.Where(t => t.Title == criteria.Title).ToList();
+            }
+
+            if (criteria.From.HasValue)
+            {
+                tickets = tickets.Where(t => t.CreateDate >= criteria.From).ToList();
+            }
+
+            if (criteria.To.HasValue)
+            {
+                tickets = tickets.Where(t => t.CreateDate <= criteria.To).ToList();
+            }
+
+            return tickets.ToList();
+        }
     }
 
 
