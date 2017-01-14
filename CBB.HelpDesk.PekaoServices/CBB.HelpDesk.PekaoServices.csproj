@@ -52,6 +52,10 @@
       <Project>{245a36c4-62ac-4579-89ca-7996c7e7c76a}</Project>
       <Name>CBB.HelpDesk.Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CBB.PekaoCalculator\CBB.PekaoCalculator.csproj">
+      <Project>{7B243776-94CD-4EC1-9E76-A2307851B89D}</Project>
+      <Name>CBB.PekaoCalculator</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

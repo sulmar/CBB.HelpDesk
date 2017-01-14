@@ -96,7 +96,14 @@ namespace CBB.HelpDesk.PekaoServices
         public void Send(Ticket ticket)
         {
             // TODO: Send SMS
-            calculator.Calculate(100, 12, 0.5m);
+            //    calculator.Calculate(100, 12, 0.5m);
+
+
+            ISender sender = null;
+
+            var message = new Message { Content = "Hello", From = "pekao", To = "609851649", SendDate = DateTime.Today.AddDays(2) };
+
+            sender.Send(message);
 
 
             // TODO: Send tweet
@@ -109,5 +116,27 @@ namespace CBB.HelpDesk.PekaoServices
         {
             throw new NotImplementedException();
         }
+    }
+
+
+    public interface ISender
+    {
+        // void Send(string content, string from, string to, DateTime sendDate);
+
+        void Send(Message message);
+
+    }
+
+
+    public class Message
+    {
+        public string Content { get; set; }
+
+        public string From { get; set; }
+
+        public string To { get; set; }
+
+        public DateTime? SendDate { get; set; }
+
     }
 }
