@@ -20,6 +20,8 @@ namespace CBB.HelpDesk.ConsoleClient
 
         static void Main(string[] args)
         {
+            ExecuteSqlTest();
+
             GetTicketTest();
 
             AddTicketDbTest();
@@ -73,10 +75,30 @@ namespace CBB.HelpDesk.ConsoleClient
 
         }
 
+        private static void ExecuteSqlTest()
+        {
+            var ticket = new Ticket
+            {
+                Title = "Awaria",
+                Description = "Opis błędu...",
+                CreateDate = DateTime.Now,
+                CreateUser = new User { UserId = 1, FirstName = "Kasia", LastName = "" },
+                Priority = Priority.Normal,
+                Category = new Category { CategoryId = 1, Name = "IT" },
+                UpdateDate = DateTime.Now,
+            };
+
+            ITicketsService ticketsService = new DbPekaoTicketsService();
+            ticketsService.Send(ticket);
+
+        }
+
         private static void GetTicketTest()
         {
-            ITicketsService ticketsServce = new DbPekaoTicketsService();
-            var ticket = ticketsServce.Get(2);
+            ITicketsService ticketsService = new DbPekaoTicketsService();
+            var ticket = ticketsService.Get(2);
+
+            Console.WriteLine(ticket.Title);
         }
 
         private static void AddTicketDbTest()
