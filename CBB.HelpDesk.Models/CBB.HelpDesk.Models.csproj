@@ -47,6 +47,7 @@
     <Compile Include="Base.cs" />
     <Compile Include="Category.cs" />
     <Compile Include="Comment.cs" />
+    <Compile Include="Gender.cs" />
     <Compile Include="Priority.cs" />
     <Compile Include="Status.cs" />
     <Compile Include="Ticket.cs" />

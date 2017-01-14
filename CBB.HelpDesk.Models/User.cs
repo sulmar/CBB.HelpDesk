@@ -24,6 +24,11 @@ namespace CBB.HelpDesk.Models
             }
         }
 
+
+        public byte Age2 { get; set; }
+
+        public Gender Gender { get; set; }
+
         public bool IsActive { get; set; }
 
         public User()
