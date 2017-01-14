@@ -71,5 +71,16 @@ namespace CBB.HelpDesk.DbPekaoServices.Properties {
                 return ResourceManager.GetString("UpdateGender", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to update dbo.Users
+        ///	set Gender = 1
+        ///.
+        /// </summary>
+        internal static string UpdateUsers {
+            get {
+                return ResourceManager.GetString("UpdateUsers", resourceCulture);
+            }
+        }
     }
 }
