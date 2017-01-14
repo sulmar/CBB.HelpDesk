@@ -6,11 +6,28 @@ using System.Threading.Tasks;
 using CBB.HelpDesk.Interfaces;
 using CBB.HelpDesk.Models;
 using System.IO;
+using CBB.PekaoCalculator;
 
 namespace CBB.HelpDesk.PekaoServices
 {
     public class PekaoTicketsService : ITicketsService
     {
+        private ICalculator calculator;
+
+
+        public PekaoTicketsService()
+            : this(new Calculator())
+        {
+
+        }
+
+        public PekaoTicketsService(ICalculator calculator)
+        {
+            this.calculator = calculator;
+        }
+
+
+
         private IList<Ticket> tickets = new List<Ticket>
         {
             new Ticket
@@ -78,7 +95,14 @@ namespace CBB.HelpDesk.PekaoServices
 
         public void Send(Ticket ticket)
         {
-            throw new NotSupportedException();
+            // TODO: Send SMS
+            calculator.Calculate(100, 12, 0.5m);
+
+
+            // TODO: Send tweet
+
+
+
         }
 
         public void Update(Ticket ticket)
