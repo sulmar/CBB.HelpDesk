@@ -60,7 +60,30 @@ namespace CBB.HelpDesk.DbPekaoServices
             throw new NotImplementedException();
         }
 
+        // Pobranie danych za pomocą SQL
+        private void SqlQuery()
+        {
+            var context = new HelpDeskContext();
+
+            var gender = Gender.Man;
+
+            var genderParameter = new SqlParameter("@Gender", gender);
+
+            var sql = "SELECT * FROM dbo.Users WHERE Gender = @Gender";
+
+            var users = context.Database.SqlQuery<User>(sql, genderParameter).ToList();
+        }
+
         public void Send(Ticket ticket)
+        {
+            SqlQuery();
+
+            ExecuteSql();
+
+        }
+
+        // Uruchomienie SQL, np. update, insert, delete
+        private static void ExecuteSql()
         {
             var context = new HelpDeskContext();
 
@@ -77,10 +100,10 @@ namespace CBB.HelpDesk.DbPekaoServices
 
 
 
+
             // SQL Injection
             //var sql = "UPDATE Users SET Gender = 1 WHERE UserId = " + userId;
             //context.Database.ExecuteSqlCommand(sql);
-
         }
 
         public void Update(Ticket ticket)
