@@ -22,7 +22,32 @@ namespace CBB.HelpDesk.ConsoleClient
         static void Main(string[] args)
         {
 
+
+
             Console.WriteLine("Application started.");
+
+            var result = Calculate(1000m);
+
+            Console.WriteLine($"Result: {result}");
+
+            // czekamy na rezultat
+            var result2 = CalculateAsync(1000m).Result;
+
+            Console.WriteLine($"Result2: {result2}");
+
+
+            // wyświetl jak obliczysz ale idziemy dalej
+            CalculateAsync(1000m)
+                .ContinueWith(result3 => Console.WriteLine($"Result3: {result3.Result}"));
+
+
+            CalculateAsync(1000m)
+                .ContinueWith(result3 => CalculateAsync(result3.Result)
+                    .ContinueWith(result4=> Console.WriteLine($"Result4: {result4.Result}")));
+
+
+
+
 
             var task1 = SendAsync();
 
@@ -101,6 +126,23 @@ namespace CBB.HelpDesk.ConsoleClient
 
         }
 
+        private static Task<decimal> CalculateAsync(decimal amount)
+        {
+            return Task.Run(() => Calculate(amount));
+        }
+
+        private static decimal Calculate(decimal amount)
+        {
+
+            Console.WriteLine("Calculating...");
+
+            Thread.Sleep(5000);
+
+            Console.WriteLine("Calculated");
+
+            return amount * 0.1m;
+        }
+        
         private static Task SendAsync()
         {
             return Task.Run(()=>Send());
