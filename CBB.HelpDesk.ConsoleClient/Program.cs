@@ -40,14 +40,9 @@ namespace CBB.HelpDesk.ConsoleClient
             CalculateAsync(1000m)
                 .ContinueWith(result3 => Console.WriteLine($"Result3: {result3.Result}"));
 
+            CalculateAllAsync();
 
-            CalculateAsync(1000m)
-                .ContinueWith(result3 => CalculateAsync(result3.Result)
-                    .ContinueWith(result4=> Console.WriteLine($"Result4: {result4.Result}")));
-
-
-
-
+            CalculateAll();
 
             var task1 = SendAsync();
 
@@ -103,7 +98,7 @@ namespace CBB.HelpDesk.ConsoleClient
 
 
             CheckedTest();
-            
+
 
             FormTicketTest();
 
@@ -126,6 +121,25 @@ namespace CBB.HelpDesk.ConsoleClient
 
         }
 
+        // Wersja asynchroniczna z ContinueWith
+        private static void CalculateAllAsync()
+        {
+            CalculateAsync(1000m)
+                .ContinueWith(result3 => CalculateAsync(result3.Result)
+                    .ContinueWith(result4 => Console.WriteLine($"Result4: {result4.Result}")));
+        }
+
+        // Wersja synchroniczna
+        private static void CalculateAll()
+        {
+            var res1 = Calculate(1000m);
+
+            var res2 = Calculate(res1);
+
+            Console.WriteLine(res2);
+        }
+
+       
         private static Task<decimal> CalculateAsync(decimal amount)
         {
             return Task.Run(() => Calculate(amount));
