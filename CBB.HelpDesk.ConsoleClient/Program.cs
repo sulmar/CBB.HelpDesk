@@ -11,6 +11,7 @@ using System.Linq;
 using System.Collections;
 using NLog;
 using CBB.HelpDesk.DbPekaoServices;
+using System.Threading;
 
 namespace CBB.HelpDesk.ConsoleClient
 {
@@ -20,6 +21,23 @@ namespace CBB.HelpDesk.ConsoleClient
 
         static void Main(string[] args)
         {
+
+            Console.WriteLine("Application started.");
+
+            Send();
+
+            Console.WriteLine("Next operation.");
+
+            Console.WriteLine("Press any key to exit.");
+
+            Console.ReadKey();
+
+
+            return;
+
+
+            #region 
+
             ExecuteSqlTest();
 
             GetTicketTest();
@@ -69,10 +87,21 @@ namespace CBB.HelpDesk.ConsoleClient
 
             AddTicketTest();
 
+            #endregion
+
             Console.WriteLine("Press any key to exit.");
 
             Console.ReadKey();
 
+        }
+
+        private static void Send()
+        {
+            Console.WriteLine("Sending...");
+
+            Thread.Sleep(5000);
+
+            Console.WriteLine("Sent.");
         }
 
         private static void ExecuteSqlTest()
