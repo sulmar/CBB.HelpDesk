@@ -4,6 +4,7 @@ using CBB.HelpDesk.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 
@@ -23,10 +24,9 @@ namespace CBB.HelpDesk.Service.Controllers
         {
         }
 
-        [HttpGet]
-        public IList<Ticket> Pobierz()
+        public async Task<IList<Ticket>> Get()
         {
-            var tickets = TicketsService.Get();
+            var tickets = await TicketsService.GetAsync();
 
             return tickets;
         }
