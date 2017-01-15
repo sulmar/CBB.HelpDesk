@@ -142,6 +142,11 @@ namespace CBB.HelpDesk.PekaoServices
 
             return tickets.ToList();
         }
+
+        public Task AddAsync(Ticket ticket)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 

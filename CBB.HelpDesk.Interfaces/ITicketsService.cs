@@ -22,6 +22,8 @@ namespace CBB.HelpDesk.Interfaces
 
         void Add(Ticket ticket);
 
+        Task AddAsync(Ticket ticket);
+
         void Update(Ticket ticket);
 
         void Remove(int ticketId);

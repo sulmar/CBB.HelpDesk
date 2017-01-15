@@ -64,5 +64,10 @@ namespace CBB.HelpDesk.AbcBankServices
         {
             throw new NotImplementedException();
         }
+
+        public Task AddAsync(Ticket ticket)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

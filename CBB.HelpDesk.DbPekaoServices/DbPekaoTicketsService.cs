@@ -125,5 +125,14 @@ namespace CBB.HelpDesk.DbPekaoServices
         {
             throw new NotImplementedException();
         }
+
+        public async Task AddAsync(Ticket ticket)
+        {
+            var context = new HelpDeskContext();
+
+            context.Tickets.Add(ticket);
+
+            await context.SaveChangesAsync();
+        }
     }
 }
