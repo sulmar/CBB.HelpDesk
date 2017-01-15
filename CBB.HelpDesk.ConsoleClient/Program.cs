@@ -24,7 +24,15 @@ namespace CBB.HelpDesk.ConsoleClient
 
             Console.WriteLine("Application started.");
 
-            Send();
+
+            var task1 = Task.Run(()=> Send());
+           
+
+            var task2 = Task.Run(()=> Send());
+
+            Task.WaitAll(task1, task2);
+
+            Task.Run(() => Send());
 
             Console.WriteLine("Next operation.");
 
@@ -95,6 +103,7 @@ namespace CBB.HelpDesk.ConsoleClient
 
         }
 
+     
         private static void Send()
         {
             Console.WriteLine("Sending...");
