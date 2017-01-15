@@ -23,18 +23,39 @@ namespace CBB.HelpDesk.Service.Controllers
         {
         }
 
-        public IList<Ticket> Get()
+        [HttpGet]
+        public IList<Ticket> Pobierz()
         {
             var tickets = TicketsService.Get();
 
             return tickets;
         }
 
-        public Ticket Get(int id)
+        [HttpGet]
+        public Ticket Pobierz(int id)
         {
             var ticket = TicketsService.Get(id);
 
             return ticket;
+        }
+
+        [HttpPost]
+        public void Test(Ticket ticket)
+        {
+            TicketsService.Add(ticket);
+        }
+
+
+        public Ticket Put(Ticket ticket)
+        {
+            TicketsService.Update(ticket);
+
+            return ticket;
+        }
+
+        public void Delete(int id)
+        {
+            TicketsService.Remove(id);
         }
 
 

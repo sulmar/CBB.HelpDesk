@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DbPeakoUsersService.cs" />
     <Compile Include="DbPekaoTicketsService.cs" />
     <Compile Include="HelpDeskContext.cs" />
     <Compile Include="Migrations\201701141115484_InitialCreate.cs" />

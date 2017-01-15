@@ -17,9 +17,23 @@ namespace CBB.HelpDesk.DbPekaoServices
         {
             var context = new HelpDeskContext();
 
+            var state = context.Entry(ticket).State;
+
             context.Tickets.Add(ticket);
+            state = context.Entry(ticket).State;
+
+            var entities = context.ChangeTracker.Entries();
+
+            context.Entry(ticket.Category).State = EntityState.Unchanged;
+            context.Entry(ticket.CreateUser).State = EntityState.Unchanged;
+
+            entities = context.ChangeTracker.Entries();
 
             context.SaveChanges();
+
+             entities = context.ChangeTracker.Entries();
+
+             state = context.Entry(ticket).State;
         }
 
         public IList<Ticket> Get()
@@ -57,7 +71,13 @@ namespace CBB.HelpDesk.DbPekaoServices
 
         public void Remove(int ticketId)
         {
-            throw new NotImplementedException();
+            var context = new HelpDeskContext();
+
+            var ticket = context.Tickets.Find(ticketId);
+
+            context.Tickets.Remove(ticket);
+
+            context.SaveChanges();
         }
 
         private void SqlProcedureQuery()
@@ -123,7 +143,15 @@ namespace CBB.HelpDesk.DbPekaoServices
 
         public void Update(Ticket ticket)
         {
-            throw new NotImplementedException();
+            var context = new HelpDeskContext();
+
+            var foundTicket = context.Tickets.Find(ticket.TicketId);
+
+            foundTicket.Title = ticket.Title;
+            foundTicket.Description = ticket.Description;
+
+            context.SaveChanges();
+
         }
 
         public async Task AddAsync(Ticket ticket)
