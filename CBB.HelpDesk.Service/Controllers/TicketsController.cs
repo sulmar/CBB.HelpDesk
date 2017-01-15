@@ -31,18 +31,21 @@ namespace CBB.HelpDesk.Service.Controllers
             return tickets;
         }
 
-        [HttpGet]
-        public Ticket Pobierz(int id)
+        public IHttpActionResult Get(int id)
         {
             var ticket = TicketsService.Get(id);
 
-            return ticket;
+            if (ticket == null)
+                return NotFound();
+
+            return Ok(ticket);
         }
 
-        [HttpPost]
-        public void Test(Ticket ticket)
+        public IHttpActionResult Post(Ticket ticket)
         {
             TicketsService.Add(ticket);
+
+            return Created<Ticket>($"http://localhost:64068/api/Tickets/{ticket.TicketId}", ticket);
         }
 
 
@@ -53,9 +56,16 @@ namespace CBB.HelpDesk.Service.Controllers
             return ticket;
         }
 
-        public void Delete(int id)
+        public IHttpActionResult Delete(int id)
         {
+            var ticket = TicketsService.Get(id);
+
+            if (ticket == null)
+                return NotFound();
+
             TicketsService.Remove(id);
+
+            return Ok();
         }
 
 

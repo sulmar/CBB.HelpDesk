@@ -64,7 +64,7 @@ namespace CBB.HelpDesk.DbPekaoServices
                 // .Include("CreateUser.Address.City")
                 // .Include("CreateUser.Addresses")
                 // .Include($"{nameof(Category)}.{nameof(Category.Name)}")
-                .Single(t => t.TicketId == ticketId);
+                .SingleOrDefault(t => t.TicketId == ticketId);
 
             return ticket;
         }
