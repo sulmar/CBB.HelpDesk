@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CBB.HelpDesk.Website", "CBB
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CBB.HelpDesk.DbPekaoServices", "CBB.HelpDesk.DbPekaoServices\CBB.HelpDesk.DbPekaoServices.csproj", "{7810C6EF-2C18-4F03-82A7-49404F0586D7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CBB.HelpDesk.Service", "CBB.HelpDesk.Service\CBB.HelpDesk.Service.csproj", "{8473FA39-50B2-4AE5-B441-4DDBE4321B58}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{7810C6EF-2C18-4F03-82A7-49404F0586D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7810C6EF-2C18-4F03-82A7-49404F0586D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7810C6EF-2C18-4F03-82A7-49404F0586D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8473FA39-50B2-4AE5-B441-4DDBE4321B58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8473FA39-50B2-4AE5-B441-4DDBE4321B58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8473FA39-50B2-4AE5-B441-4DDBE4321B58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8473FA39-50B2-4AE5-B441-4DDBE4321B58}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
