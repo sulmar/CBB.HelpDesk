@@ -21,36 +21,39 @@ namespace CBB.HelpDesk.ConsoleClient
 
         static void Main(string[] args)
         {
-
-
-
             Console.WriteLine("Application started.");
 
-            var result = Calculate(1000m);
+            CalculateAllAsync2();
 
-            Console.WriteLine($"Result: {result}");
+            #region
 
-            // czekamy na rezultat
-            var result2 = CalculateAsync(1000m).Result;
+            //var result = Calculate(1000m);
 
-            Console.WriteLine($"Result2: {result2}");
+            //Console.WriteLine($"Result: {result}");
+
+            //// czekamy na rezultat
+            //var result2 = CalculateAsync(1000m).Result;
+
+            //Console.WriteLine($"Result2: {result2}");
 
 
-            // wyświetl jak obliczysz ale idziemy dalej
-            CalculateAsync(1000m)
-                .ContinueWith(result3 => Console.WriteLine($"Result3: {result3.Result}"));
+            //// wyświetl jak obliczysz ale idziemy dalej
+            //CalculateAsync(1000m)
+            //    .ContinueWith(result3 => Console.WriteLine($"Result3: {result3.Result}"));
 
-            CalculateAllAsync();
+            //CalculateAllAsync();
 
-            CalculateAll();
+            //CalculateAll();
 
-            var task1 = SendAsync();
+            //var task1 = SendAsync();
 
-            var task2 = SendAsync();
+            //var task2 = SendAsync();
 
-            Task.WaitAll(task1, task2);
+            //Task.WaitAll(task1, task2);
 
-            SendAsync();
+            //SendAsync();
+
+            #endregion
 
             Console.WriteLine("Next operation.");
 
@@ -139,7 +142,16 @@ namespace CBB.HelpDesk.ConsoleClient
             Console.WriteLine(res2);
         }
 
-       
+        // Metoda asynchroniczna z użyciem async-await
+        private static async void CalculateAllAsync2()
+        {
+            var res1 = await CalculateAsync(1000m);
+
+            var res2 = await CalculateAsync(10m);
+
+            Console.WriteLine(res2);
+        }
+
         private static Task<decimal> CalculateAsync(decimal amount)
         {
             return Task.Run(() => Calculate(amount));
