@@ -1,4 +1,5 @@
-﻿using CBB.HelpDesk.Interfaces;
+﻿using CBB.HelpDesk.DbPekaoServices;
+using CBB.HelpDesk.Interfaces;
 using CBB.HelpDesk.Models;
 using CBB.HelpDesk.PekaoServices;
 using System;
@@ -12,12 +13,22 @@ namespace CBB.HelpDesk.Website.Controllers
 {
     public class TicketsController : Controller
     {
-        ITicketsService TicketsService = new PekaoTicketsService();
+        readonly ITicketsService TicketsService;
+
+        public TicketsController(ITicketsService ticketsService)
+        {
+            this.TicketsService = ticketsService;
+        }
+
+        public TicketsController()
+            : this(new DbPekaoTicketsService())
+        {
+        }
 
         // GET: Tickets
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            var tickets = TicketsService.Get();
+            var tickets = await TicketsService.GetAsync();
 
             return View(tickets);
         }

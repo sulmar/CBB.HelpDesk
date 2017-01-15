@@ -12,6 +12,8 @@ namespace CBB.HelpDesk.Interfaces
 
         IList<Ticket> Get();
 
+        Task<IList<Ticket>> GetAsync();
+
         Ticket Get(int ticketId);
 
 

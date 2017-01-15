@@ -134,5 +134,14 @@ namespace CBB.HelpDesk.DbPekaoServices
 
             await context.SaveChangesAsync();
         }
+
+        public async Task<IList<Ticket>> GetAsync()
+        {
+            var context = new HelpDeskContext();
+
+            var tickets = await context.Tickets.ToListAsync();
+
+            return tickets;
+        }
     }
 }
