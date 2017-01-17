@@ -12,6 +12,7 @@ using System.Collections;
 using NLog;
 using CBB.HelpDesk.DbPekaoServices;
 using System.Threading;
+using System.Net.Http;
 
 namespace CBB.HelpDesk.ConsoleClient
 {
@@ -21,6 +22,17 @@ namespace CBB.HelpDesk.ConsoleClient
 
         static void Main(string[] args)
         {
+            GetTickets();
+
+            GetTicketById();
+
+
+            Console.WriteLine("Press any key to exit.");
+
+            Console.ReadKey();
+
+            return;
+
             Console.WriteLine("Application started.");
 
             CalculateAllAsync2();
@@ -60,9 +72,6 @@ namespace CBB.HelpDesk.ConsoleClient
             Console.WriteLine("Press any key to exit.");
 
             Console.ReadKey();
-
-
-            return;
 
 
             #region 
@@ -122,6 +131,43 @@ namespace CBB.HelpDesk.ConsoleClient
 
             Console.ReadKey();
 
+        }
+
+
+
+        private static async Task GetTicketById()
+        {
+            var ticketId = 9;
+
+            using (var client = new HttpClient())
+            {
+                var request = $"http://localhost:64068/api/Tickets/{ticketId}"; 
+
+                var response = await client.GetAsync(request);
+
+                var ticket = await response.Content.ReadAsAsync<Ticket>();
+
+                Console.WriteLine(ticket);
+
+            }
+        }
+
+        private static async Task GetTickets()
+        {
+
+            using (var client = new HttpClient())
+            {
+                var request = $"http://localhost:64068/api/Tickets";
+
+                var response = await client.GetAsync(request);
+
+                var tickets = await response.Content.ReadAsAsync<IList<Ticket>>();
+
+                foreach (var ticket in tickets)
+                {
+                    Console.WriteLine(ticket);
+                }
+            }
         }
 
         // Wersja asynchroniczna z ContinueWith
