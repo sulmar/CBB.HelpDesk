@@ -171,5 +171,17 @@ namespace CBB.HelpDesk.DbPekaoServices
 
             return tickets;
         }
+
+        public async Task<Ticket> GetAsync(int ticketId)
+        {
+            var context = new HelpDeskContext();
+
+            var ticket = await context.Tickets
+                .Include(t => t.Category)
+                .Include(t => t.CreateUser)
+                .SingleOrDefaultAsync(t => t.TicketId == ticketId);
+
+            return ticket;
+        }
     }
 }

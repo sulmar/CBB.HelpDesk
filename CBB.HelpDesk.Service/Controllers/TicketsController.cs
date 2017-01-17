@@ -24,16 +24,16 @@ namespace CBB.HelpDesk.Service.Controllers
         {
         }
 
-        public async Task<IList<Ticket>> Get()
+        public async Task<IHttpActionResult> Get()
         {
             var tickets = await TicketsService.GetAsync();
 
-            return tickets;
+            return Ok(tickets);
         }
 
-        public IHttpActionResult Get(int id)
+        public async Task<IHttpActionResult> Get(int id)
         {
-            var ticket = TicketsService.Get(id);
+            var ticket = await TicketsService.GetAsync(id);
 
             if (ticket == null)
                 return NotFound();

@@ -152,6 +152,11 @@ namespace CBB.HelpDesk.PekaoServices
         {
             throw new NotImplementedException();
         }
+
+        public Task<Ticket> GetAsync(int ticketId)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 
