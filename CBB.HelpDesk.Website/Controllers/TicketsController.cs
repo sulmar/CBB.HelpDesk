@@ -42,6 +42,12 @@ namespace CBB.HelpDesk.Website.Controllers
 
         public async Task<ActionResult> Add(Ticket ticket)
         {
+            if (!ModelState.IsValid)
+            { // re-render the view when validation failed.
+                return View("Create", ticket);
+            }
+
+
             await TicketsService.AddAsync(ticket);
 
             return View(ticket);

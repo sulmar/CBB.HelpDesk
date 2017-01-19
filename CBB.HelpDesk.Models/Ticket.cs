@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CBB.HelpDesk.Models.Validators;
+using FluentValidation.Attributes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace CBB.HelpDesk.Models
 {
+    [Validator(typeof(TicketValidator))]
     public class Ticket : Base
     {
 
